@@ -14,16 +14,11 @@ export default function TodaysGames() {
             setError(null);
             try {
                 const response = await fetch('/api/getGames', {
-                    method: 'POST',
+                    method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
-                        // Add any other headers your API requires, like authorization tokens
+                    
                     },
-                    // If your API expects a body for the POST request, include it here.
-                    // For example, if you need to send the current date:
-                    // body: JSON.stringify({ date: new Date().toISOString().split('T')[0] }),
-                    // If no body is needed, you can omit it or send an empty object:
-                    body: JSON.stringify({date: new Date().toISOString().split('T')[0]}),
                 });
 
                 if (!response.ok) {
