@@ -51,6 +51,8 @@ async function fetchGames(apiKey, sportsKey, db) { // Added db parameter
         sportKey: sportsKey,
       }));
 
+
+      const deleteResult = await collection.deleteMany({});
       const insertResult = await collection.insertMany(gamesToInsert);
       console.log(
         `${insertResult.insertedCount} games inserted into '${collectionName}' for ${sportsKey}`
