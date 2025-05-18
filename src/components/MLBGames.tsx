@@ -13,7 +13,7 @@ export default function TodaysGames() {
             setLoading(true);
             setError(null);
             try {
-                const response = await fetch('/api/getGames', {
+                const response = await fetch('/api/baseball_mlb', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -28,8 +28,8 @@ export default function TodaysGames() {
                 }
 
                 const data = await response.json();
-                console.log(data.content)
-                setGames(data.games || data); // Adjust based on your API response structure
+                console.log(data)
+                setGames(data); // Adjust based on your API response structure
             } catch (err) {
                 if (err instanceof Error) {
                     setError(err.message);
@@ -44,8 +44,6 @@ export default function TodaysGames() {
 
         fetchTodaysGames();
 
-        // The empty dependency array [] means this useEffect will run once
-        // when the component mounts, similar to componentDidMount.
     }, []);
 
     if (loading) {
@@ -61,9 +59,14 @@ export default function TodaysGames() {
         Todays Games:
         {games.length > 0 ? (
             <ul>
-                {games.map((game, index) => (
-                    // Replace 'game.id' and 'game.name' with actual properties of your game object
-                    <li key={game.id || index}>{game.name || JSON.stringify(game)}</li>
+
+              {games.map((game, index) => (
+                    // Using game.id if available, otherwise combining team names for a key.
+                    // A more robust unique ID from your data is always preferred for the key.
+                    <li key={`${game.home_team}-${game.away_team}-${index}`}>
+                        <strong>{game.sport_title}</strong>: {game.home_team} (Home) vs. {game.away_team} (Away)<br></br>
+                        Start Time: {game.commence_time}
+                    </li>
                 ))}
             </ul>
         ) : (

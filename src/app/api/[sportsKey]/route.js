@@ -1,14 +1,8 @@
 import { connectToDatabase } from "../../../../lib/mongoConnection.js";
 import { NextResponse } from "next/server";
 
-// For Route Handlers, you export functions named after HTTP methods.
-// The first argument is the Request object, and the second (optional)
-// is an object containing `params` for dynamic routes.
-export async function GET(request, { params }) {
-  // Method check is implicitly handled by only defining a GET handler.
-  // If you needed to support other methods, you'd export async function POST(request, { params }) etc.
-  console.log("API Route Handler - Received params:", params); // <-- Add this line
-  console.log("API Route Handler - Full request URL:", request.url); // <-- Add this line
+export async function GET(request, { params: paramsPromise }) {
+  const params = await paramsPromise;
   const { sportsKey } = params; // sportKey comes from the dynamic segment [sportsKey]
 
   if (!sportsKey) {
