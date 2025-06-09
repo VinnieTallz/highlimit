@@ -65,7 +65,7 @@ export default function TodaysGames() {
                     // A more robust unique ID from your data is always preferred for the key.
                     <li key={`${game.home_team}-${game.away_team}-${index}`}>
                         <strong>{game.sport_title}</strong>: {game.home_team} (Home) vs. {game.away_team} (Away)<br></br>
-                        Start Time: {game.commence_time}
+                        Start Time: {game.commence_time} <br /><br />
                     </li>
                 ))}
             </ul>

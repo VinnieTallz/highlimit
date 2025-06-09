@@ -5,9 +5,11 @@ import MLBGames from "@/components/MLBGames";
 export default function Home() {
   return (
   <div>
-  The HIGH Limit Room
+  The HIGH Limit Room <p />
       <div>
-        <NHLGames /><NBAGames /><MLBGames />
+        {/* <NHLGames /><br /> */}
+        <NBAGames /><br />
+        <MLBGames /><br />
       </div>
   </div>
   );
