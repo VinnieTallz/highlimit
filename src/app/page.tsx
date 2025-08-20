@@ -7,7 +7,7 @@ export default function Home() {
   <div>
   The HIGH Limit Room <p />
       <div>
-        {/* <NHLGames /><br /> */}
+        <NHLGames /><br />
         <NBAGames /><br />
         <MLBGames /><br />
       </div>

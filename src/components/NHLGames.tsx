@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-
 export default function TodaysGames() {
     const [games, setGames] = useState<any[]>([]); 
     const [loading, setLoading] = useState<boolean>(true);
